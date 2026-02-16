@@ -44,7 +44,7 @@ Scientific knowledge evolves through complex processes of discovery, validation,
 
 ```bash
 # Clone the repository
-git clone https://github.com/yourusername/scientific-change-analysis.git
+git clone https://github.com/afshinmohammadi/scientific-change-analysis.git
 cd scientific-change-analysis
 
 # Create virtual environment
@@ -345,4 +345,3 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 **Afshin Mohammadi**  
 Email: Afshinciv@gmail.com  
-LinkedIn: [linkedin.com/in/yourprofile](https://linkedin.com/in/yourprofile)
