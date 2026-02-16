@@ -1,0 +1,89 @@
+# Model Configuration
+# Parameters for paradigm detection and prediction models
+
+# Paradigm shift detection
+paradigm_detection:
+  # General settings
+  enabled: true
+  threshold: 0.7  # Magnitude threshold for shift detection
+  min_papers: 50  # Minimum papers to analyze a field
+  
+  # Detection methods
+  methods:
+    - structural      # Community reorganization
+    - semantic        # Embedding drift
+    - citation_flow   # Citation pattern changes
+  
+  # Structural detection
+  structural:
+    resolution: 0.8
+    temporal_window: 2  # Years to compare
+    min_reassignment_rate: 0.3
+  
+  # Semantic detection
+  semantic:
+    embedding_dim: 128
+    distance_threshold: 0.3
+    embedding_method: node2vec
+  
+  # Citation flow detection
+  citation:
+    correlation_threshold: 0.5
+    use_pagerank: true
+    use_betweenness: true
+
+# Key paper detection
+key_paper_detection:
+  enabled: true
+  velocity_threshold: 2.0  # Standard deviations
+  bridging_threshold: 0.5
+  max_key_papers: 20
+
+# Field evolution prediction
+prediction:
+  enabled: true
+  model: gradient_boosting  # gradient_boosting, random_forest, neural_net
+  
+  features:
+    - network_topology
+    - embedding_drift
+    - citation_velocity
+    - author_centrality
+    - field_connectivity
+  
+  training:
+    test_size: 0.2
+    cross_validation: 5
+    random_state: 42
+  
+  hyperparameters:
+    gradient_boosting:
+      n_estimators: 100
+      max_depth: 5
+      learning_rate: 0.1
+    
+    random_forest:
+      n_estimators: 100
+      max_depth: 10
+    
+    neural_net:
+      hidden_layers: [64, 32]
+      dropout: 0.3
+      epochs: 50
+
+# Clustering settings
+clustering:
+  method: kmeans  # kmeans, hdbscan, agglomerative
+  n_clusters: 50
+  min_cluster_size: 10
+  
+  hdbscan:
+    min_samples: 5
+    cluster_selection_epsilon: 0.1
+
+# Output settings
+output:
+  save_models: true
+  model_path: models/
+  results_path: results/
+  generate_visualizations: true

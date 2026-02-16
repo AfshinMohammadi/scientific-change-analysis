@@ -1,0 +1,90 @@
+# Data Source Configuration
+# Defines data sources for academic and non-academic data
+
+# Academic data sources
+academic:
+  primary_source: semantic_scholar  # semantic_scholar, openalex, arxiv
+  
+  semantic_scholar:
+    api_key: null  # Set via environment variable
+    rate_limit: 0.1  # 10 requests per second
+    bulk_download: true
+    fields:
+      - paperId
+      - title
+      - authors
+      - year
+      - abstract
+      - citationCount
+      - references
+      - venue
+      - fieldsOfStudy
+  
+  openalex:
+    email: null  # For polite pool access
+    rate_limit: 0.05  # 20 requests per second (polite pool)
+  
+  arxiv:
+    rate_limit: 3.0  # Be respectful to arXiv
+    categories:
+      - cs.AI
+      - cs.LG
+      - cs.CL
+      - stat.ML
+
+# Non-academic data sources (web scraping)
+non_academic:
+  enabled: true
+  
+  news_sources:
+    - name: science_news
+      base_url: https://www.sciencenews.org
+      enabled: true
+      rate_limit: 1.0
+    
+    - name: scientific_american
+      base_url: https://www.scientificamerican.com
+      enabled: true
+      rate_limit: 1.0
+    
+    - name: nature_news
+      base_url: https://www.nature.com/news
+      enabled: true
+      rate_limit: 1.0
+  
+  policy_sources:
+    - name: nih
+      base_url: https://www.nih.gov/news-events/news-releases
+      enabled: true
+    
+    - name: nsf
+      base_url: https://new.nsf.gov/news
+      enabled: true
+  
+  rss_feeds:
+    - name: nature_rss
+      url: https://www.nature.com/nature.rss
+      enabled: true
+    
+    - name: science_rss
+      url: https://www.science.org/rss/news_current.xml
+      enabled: true
+
+# Data preprocessing
+preprocessing:
+  min_abstract_length: 50  # Minimum characters
+  min_citations: 0
+  year_range:
+    start: 2000
+    end: 2024
+  
+  text_cleaning:
+    remove_stopwords: true
+    min_word_length: 3
+    lowercase: true
+
+# Storage
+storage:
+  raw_data_path: data/raw/
+  processed_data_path: data/processed/
+  format: jsonl  # jsonl, json, parquet

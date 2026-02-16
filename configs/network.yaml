@@ -1,0 +1,58 @@
+# Network Construction Configuration
+# Parameters for building citation and co-authorship networks
+
+network:
+  # Citation network settings
+  citation:
+    directed: true
+    min_citations: 0  # Minimum citations to include paper
+    max_nodes: null   # Maximum nodes (null = unlimited)
+    
+  # Temporal slicing
+  temporal:
+    enabled: true
+    start_year: 2000
+    end_year: 2024
+    window_size: 1    # Years per slice
+    cumulative: false # Include all previous years
+  
+  # Co-authorship network settings
+  coauthorship:
+    min_papers_per_author: 1
+    min_collaborations: 1
+
+# Community detection
+community_detection:
+  algorithm: leiden  # leiden, louvain, infomap, label_propagation
+  resolution: 0.8
+  n_iterations: 10
+  min_community_size: 10
+
+# Network analysis
+analysis:
+  compute_centralities: true
+  centrality_methods:
+    - pagerank
+    - betweenness
+    - closeness
+    - degree
+  
+  compute_clustering: true
+  compute_paths: false  # Expensive for large networks
+
+# Embedding generation
+embedding:
+  enabled: true
+  method: node2vec  # node2vec, deepwalk, graphsage, spectral
+  dimensions: 128
+  walk_length: 30
+  num_walks: 200
+  window_size: 5
+  workers: 4
+
+# Topic modeling
+topics:
+  enabled: true
+  method: lda  # lda, nmf, bert
+  n_topics: 50
+  max_features: 10000
