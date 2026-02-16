@@ -15,7 +15,7 @@ setup(
     description="Framework for modeling scientific knowledge evolution through network science",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url="https://github.com/yourusername/scientific-change-analysis",
+    url="https://github.com/afshinmohammadi/scientific-change-analysis",
     packages=find_packages(),
     classifiers=[
         "Development Status :: 4 - Beta",
