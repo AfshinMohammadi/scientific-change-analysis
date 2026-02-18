@@ -332,7 +332,6 @@ If you use this code in your research, please cite:
 @article{mohammadi2025scientificchange,
   title={The Architecture of Scientific Change: Theory, Metrics, and Prediction},
   author={Mohammadi, Afshin},
-  journal={arXiv preprint},
   year={2025}
 }
 ```
